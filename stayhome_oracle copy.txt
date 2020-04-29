@@ -1,0 +1,125 @@
+-- ITESM Campus Guadalajara
+-- Bases de Datos
+-- Mat. Ana Delia Esparza Soto
+-- Base de Datos Stayhome
+
+CREATE TABLE Director
+(DirectorNo       CHAR(5),
+ DirectorName     VARCHAR(25) 
+)
+;
+
+CREATE TABLE Video
+(catalogNo          INT,
+ title              VARCHAR(30),
+ certificate        VARCHAR(10),
+ category           VARCHAR(10),
+ dailyRental        DEC (3,2),
+ price              DEC (5,2),
+ DirectorNo         CHAR(5)
+)
+;
+
+CREATE TABLE VideoForRent
+(videoNo            INT,
+available           INT CHECK (available IN (0,1)),
+ catalogNo          INT
+)
+;
+
+CREATE TABLE MemberVi
+(memberNo        INT,
+ fName           VARCHAR(15),
+ lName           VARCHAR(15),
+ sex             CHAR(1),
+ DOB             DAte,
+ address         VARCHAR(50),
+ dateJoined      DATE
+)
+;
+
+CREATE TABLE RentalAgreement
+(rentalNo        INT,
+ memberNo        INT,
+ videoNo         INT,
+ dateOut         DATE,
+ dateReturn      DATE
+)
+;
+
+
+INSERT INTO Director VALUES ('D0078', 'Stephen Herek')
+;
+INSERT INTO Director VALUES ('D1001', 'Roger Spottiswoode')
+;
+INSERT INTO Director VALUES ('D3765', 'Jane Emmerick')
+;
+INSERT INTO Director VALUES ('D4576', 'John Woo')
+;
+INSERT INTO Director VALUES ('D5743', 'Michael Bay')
+;
+INSERT INTO Director VALUES ('D7834', 'Sally Nichols')
+;
+INSERT INTO Video VALUES (207132, 'Tomorrow Never Dies','12','Action',5,21.99,'D1001')
+;
+INSERT INTO Video VALUES (330553, 'Face/Off','12','Thriller',5,31.99,'D4576')
+;
+INSERT INTO Video VALUES (445624, 'The Rock','18','Action',4,29.99,'D5743')
+;
+INSERT INTO Video VALUES (634817, 'Independence Day','PG','Sci-Fi',4.5,32.99,'D3765')
+;
+INSERT INTO Video VALUES (781132, '101 Dalmatians','U','Children',4,18.5,'D0078')
+;
+INSERT INTO Video VALUES (902355, 'Primary Colors','U','Comedy',4.5,14.5,'D7834')
+;
+INSERT INTO VideoForRent VALUES (178643, 0,634817)
+;
+INSERT INTO VideoForRent VALUES (199004, 1,207132)
+;
+INSERT INTO VideoForRent VALUES (200900, 1,330553)
+;
+INSERT INTO VideoForRent VALUES (210087, 1,902355)
+;
+INSERT INTO VideoForRent VALUES (243431, 1,634817)
+;
+INSERT INTO VideoForRent VALUES (245456, 1,207132)
+;
+INSERT INTO VideoForRent VALUES (245457, 1,207132)
+;
+INSERT INTO VideoForRent VALUES (317411, 1,781132)
+;
+INSERT INTO Member VALUES (1,'Karen', 'Parker','F','22-2-1972','22 Greenway Drive, Glasgow, G12 8DS','6-1-1991')
+;
+INSERT INTO Member VALUES (2,'Gillian', 'Peters','F','9-3-1954','89 Redmond Road, Glasgow, G11 9YR','19-4-1995')
+;
+INSERT INTO Member VALUES (3,'Bob', 'Adams','M','15-11-1974','57 Littleway Road, Glasgow, G3 6DS','6-1-1998')
+;
+INSERT INTO Member VALUES (4,'Don', 'Nelson','M','12-12-1951','123 Suffolk Lane,Glasgow, G15 1RC','7-4-2000')
+;
+INSERT INTO Member VALUES (5,'Lorna', 'Smith','F','1-1-1972','Flat 5A London Road, Glasgow, G3','11-1-1998')
+;
+INSERT INTO Member VALUES (6,'Dan', 'White','M','5-5-1960','200 Great Western Road, Glasgow, G11 9JJ','5-5-2001')
+;
+INSERT INTO RentalAgreement (memberNo, videoNo, dateOut, dateReturn) VALUES (1, 178643,'2-5-2000','2-7-2000')
+;
+INSERT INTO RentalAgreement (memberNo, videoNo, dateOut, dateReturn) VALUES (1, 199004,'2-5-2000','2-7-2000')
+;
+INSERT INTO RentalAgreement (memberNo, videoNo, dateOut, dateReturn) VALUES (1, 245456,'2-4-2000','2-6-2000')
+;
+INSERT INTO RentalAgreement (memberNo, videoNo, dateOut, dateReturn) VALUES (1, 243431,'2-4-2000','2-6-2000')
+;
+INSERT INTO RentalAgreement (memberNo, videoNo, dateOut, dateReturn) VALUES (3, 199004,'11-11-1999','12-11-1999')
+;
+INSERT INTO RentalAgreement (memberNo, videoNo, dateOut, dateReturn) VALUES (2, 245456,'11-11-1999','13-11-1999')
+;
+INSERT INTO RentalAgreement (memberNo, videoNo, dateOut, dateReturn) VALUES (4, 178643,'14-11-1999','16-11-1999')
+;
+INSERT INTO RentalAgreement (memberNo, videoNo, dateOut, dateReturn) VALUES (3, 243431,'11-11-1999','13-11-1999')
+;
+INSERT INTO RentalAgreement (memberNo, videoNo, dateOut, dateReturn) VALUES (1, 245457,'12-11-1999','14-11-1999')
+;
+INSERT INTO RentalAgreement (memberNo, videoNo, dateOut, dateReturn) VALUES (3, 199004,'10-8-2000',NULL)
+;
+INSERT INTO RentalAgreement (memberNo, videoNo, dateOut, dateReturn) VALUES (2, 199004,'17-8-2000','20-8-2000')
+;
+
